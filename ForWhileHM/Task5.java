@@ -1,4 +1,4 @@
-package com.dmdev.cs.homework;
+package com.dmdev.cs.homework.ForWhileHM;
 
 import java.util.Scanner;
 
