@@ -12,37 +12,33 @@ package com.dmdev.cs.homework.arrayHM;
 public class Task3 {
     public static void main(String[] args) {
         int[] values = {-4, 0, 1, 9, 0, -18, 3};
-        Task1.printArray(positiveArray(values));
-        System.out.println();
-        Task1.printArray(oddArray(values));
-        System.out.println();
-        Task1.printArray(zeroArray(values));
-        System.out.println();
-        System.out.println((allArrays(positiveArray(values),oddArray(values),zeroArray(values))));
+
+        int[][] result = allArrays(positiveArray(values),oddArray(values),zeroArray(values));
+        print2DArray(result,positiveArray(values).length,oddArray(values).length,zeroArray(values).length);
     }
 
     private static int[][] allArrays(int[] array1, int[] array2, int[] array3) {
-        int firstArray = 0;
-        for (int currentValue : array1) {
-            firstArray++;
+        int maxLength = 0;
+        if (array1.length > array2.length && array1.length > array3.length) {
+            maxLength = array1.length;
+        } else if (array2.length > array1.length && array2.length > array3.length) {
+            maxLength = array2.length;
+        } else if (array3.length > array1.length && array3.length > array2.length) {
+            maxLength = array3.length;
+        } else if (array1.length == array2.length && array1.length == array3.length) {
+            maxLength = array1.length;
         }
-        int secondArray = 0;
-        for (int currentValue : array2) {
-            secondArray++;
+        int[][] allArrays = new int[3][maxLength];
+        for (int firstArray = 0; firstArray < array1.length; firstArray++) {
+            allArrays[0][firstArray] = array1[firstArray];
         }
-        int thirdArray = 0;
-        for (int currentValue : array3) {
-            thirdArray++;
+        for (int secondArray = 0; secondArray < array2.length; secondArray++) {
+            allArrays[1][secondArray] = array2[secondArray];
         }
-        int[][] allArrays = new int[firstArray][secondArray];
-        int firstIndex = 0;
-        int secondIndex = 0;
-        for (int countFirst : array1) {
-            for (int countSecond : array2) {
-                allArrays[firstIndex++][countSecond] = countFirst;
-                allArrays[firstIndex][secondIndex++] = countFirst;
-            }
+        for (int thirdArray = 0; thirdArray < array3.length; thirdArray++) {
+            allArrays[2][thirdArray] = array3[thirdArray];
         }
+
         return allArrays;
     }
 
@@ -110,6 +106,16 @@ public class Task3 {
             zeroArray[currentValue] = bufferArray[currentValue];
         }
         return zeroArray;
+    }
+
+    public static void print2DArray(int[][] array, int length1, int length2, int length3) {
+        int[] lengths = {length1, length2, length3};
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < lengths[i]; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
 }
