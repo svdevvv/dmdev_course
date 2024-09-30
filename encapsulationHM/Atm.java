@@ -65,7 +65,7 @@ public class Atm {
         thirdTypeBanknote -= thirdTypeBanknotesCount;
 
 
-        System.out.println("Снято наличности: " + balance + " с помощью: " +
+        System.out.println("Снято " + balance + " с помощью: " +
                 firstTypeBanknotesCount + " десяток, " +
                 secondTypeBanknotesCount + " двадцаток, " +
                 thirdTypeBanknotesCount + " пятидесяток.");
